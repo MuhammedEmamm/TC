@@ -1,0 +1,267 @@
+<section class="probootstrap_cover_v3 overflow-hidden relative text-center"
+  style="background-image: url('assets/images/img_1.jpg');height: 55vh;" id="section-home">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row align-items-center justify-content-center" style="height:60vh">
+      <div class="col-md">
+        <h2 class="heading mb-2 ">أجندة الاحداث</h2>
+        <p class="lead mb-5  ">جميع اعضاء غرفة صناعة النسيج</p>
+        <div class="row">
+          <div class="col-4">
+          </div>
+          <div class="col-4">
+            <select class="form-control text-center" [(ngModel)]="Cat" (change)="Filter(Type , Cat)">
+              <option value="" selected>الشعب</option>
+              <option *ngFor="let div of Cats" [value]="div.Id">{{div.Name}}</option>
+            </select>
+
+          </div>
+
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-4">
+
+          </div>
+          <div class="col-4">
+            <select class="form-control" [(ngModel)]="Type" (change)="Filter(Type , Cat)">
+              <option value="" selected>النوع</option>
+              <option value="1">مؤتمرات</option>
+              <option value="2">تدريبات</option>
+              <option value="3">معارض</option>
+            </select>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</section>
+<!-- END section -->
+
+<section class="probootstrap_section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-md-4">
+            <h6 class="text-center">
+              <i class="fa fa-circle" style="color:#ad2121"></i> &nbsp; مؤتمرات
+            </h6>
+          </div>
+          <div class="col-md-4">
+            <h6 class="text-center">
+              <i class="fa fa-circle" style="color:#1e90ff"></i> &nbsp; تدريبات
+            </h6>
+          </div>
+          <div class="col-md-4">
+            <h6 class="text-center">
+              <i class="fa fa-circle" style="color:#e3bc08"></i> &nbsp; معارض
+            </h6>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <br>
+    <div class="row text-center">
+      <div class="col-md-4">
+        <div class="btn-group">
+          <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+            (viewDateChange)="closeOpenMonthViewDay()">
+            Next
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+      </div>
+      <div class="col-md-4">
+        <div class="btn-group">
+          <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+            (viewDateChange)="closeOpenMonthViewDay()">
+            Previous
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <br />
+    <div [ngSwitch]="view">
+      <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+        [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
+        (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)"
+        (click)="GetEventbyMonth()">
+      </mwl-calendar-month-view>
+      <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+        [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)">
+      </mwl-calendar-week-view>
+      <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
+        [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)">
+      </mwl-calendar-day-view>
+    </div>
+    <br>
+    <br>
+
+    <div id="event"></div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="row">
+      <div class="col-12 event" *ngFor="let event of FilterdEvents">
+        <div [class.conf]="event.TypeId == '1'" [class.trainig]="event.TypeId == '2'"
+          [class.fair]="event.TypeId == '3'">
+          <span *ngIf="event.TypeId == '1'">مؤتمر</span>
+          <span *ngIf="event.TypeId == '2'">تدريب</span>
+          <span *ngIf="event.TypeId == '3'">معرض</span>
+
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <img src="{{event.ImageURL}}" (error)="event.ImageURL = 'assets/images/test.jpg'" height="150px"
+              width="100%">
+          </div>
+          <div class="col-9">
+
+            <h3>{{event.Name}}</h3>
+            <p innerHTML="{{event.Description}}"></p>
+            <h3 class="pull-left">
+              <button class="btn btn-primary" (click)="ServiceDetails(event.Id)" style="cursor:pointer">انضم
+                للحدث</button>
+            </h3>
+          </div>
+
+        </div>
+      </div>
+
+      <h6 class="text-center" *ngIf="loading">
+        <img src="assets/images/Rolling-1s-200px.svg" id="loading1" width="60" height="60">
+      </h6>
+      <h4 class="text-center" *ngIf="notFound">
+        لا يوجد أحداث في هذا اليوم
+      </h4>
+    </div>
+
+  </div>
+</section>
+
+<ng-template #RequestService let-close="close">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 class="title text-center" id="largeModalLabel"><i class="fa fa-edit"></i> انضم للحدث</h3>
+    </div>
+    <div class="modal-body">
+      <div class="card-body">
+        <form [formGroup]="RequestServiceForm" (ngSubmit)="ResetPassword()">
+
+          <div class="row">
+            <div class="col-1 col-md-1"><i class="fa fa-users"></i></div>
+            <div class="col-10 col-md-10">
+              <input type="text" class="input-form" placeholder="الاسم" formControlName="Name"
+                [ngClass]="{ 'is-invalid': submitted && s.Name.errors }">
+              <hr>
+
+              <div *ngIf="submitted && s.Name.errors" class="invalid-feedback">
+                <div *ngIf="s.Name.errors.required">Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-1 col-md-1"><i class="fa fa-envelope fa-lg icons"></i></div>
+            <div class="col-10 col-md-10">
+              <input type="text" class="input-form" placeholder="اسم الشركة" formControlName="CompanyName"
+                [ngClass]="{ 'is-invalid': submitted && s.CompanyName.errors }">
+              <hr>
+
+              <div *ngIf="submitted && s.CompanyName.errors" class="invalid-feedback">
+                <div *ngIf="s.CompanyName.errors.required">Company Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-1 col-md-1"><i class="fa fa-phone fa-lg icons"></i></div>
+            <div class="col-10 col-md-10">
+              <input type="text" class="input-form" placeholder="رقم الهاتف" formControlName="PhoneNumber"
+                [ngClass]="{ 'is-invalid': submitted && s.PhoneNumber.errors }">
+              <hr>
+
+              <div *ngIf="submitted && s.PhoneNumber.errors" class="invalid-feedback">
+                <div *ngIf="s.PhoneNumber.errors.required">PhoneNumber is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-1 col-md-1"><i class="fa fa-check fa-lg icons"></i></div>
+            <div class="col-10 col-md-10">
+              <input type="email" class="input-form" placeholder="Email" formControlName="Email"
+                [ngClass]="{ 'is-invalid': submitted && s.Email.errors }">
+              <hr>
+
+              <div *ngIf="submitted && s.Email.errors" class="invalid-feedback">
+
+                <div *ngIf="s.Email.errors.required"> Email is required</div>
+                <div *ngIf="s.Email.errors.email"> Email is not valid</div>
+
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-1 col-md-1"><i class="fa fa-unlock-alt fa-lg icons"></i></div>
+            <div class="col-10 col-md-10">
+              عضو
+              <input type="radio" class="input-form" placeholder="New Password" formControlName="Member"
+                [ngClass]="{ 'is-invalid': submitted && s.Member.errors }" [value]="'عضو'" [(ngModel)]="mem">
+              &nbsp;&nbsp;&nbsp;
+              غير عضو
+              <input type="radio" class="input-form" placeholder="New Password" formControlName="Member"
+                [ngClass]="{ 'is-invalid': submitted && s.Member.errors }" [value]="'غير عضو'" [(ngModel)]="mem">
+              <hr>
+              <div *ngIf="submitted && s.Member.errors" class="invalid-feedback">
+                <div *ngIf="s.Member.errors.required"> Member is required</div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row" *ngIf="mem == 'عضو'">
+            <div class="col-1 col-md-1"><i class="fa fa-check fa-lg icons"></i></div>
+            <div class="col-10 col-md-10">
+              <input type="text" class="input-form" placeholder="رقم العضوية" formControlName="MemberShipNumber"
+                [ngClass]="{ 'is-invalid': submitted && s.MemberShipNumber.errors }">
+              <hr>
+              <div *ngIf="submitted && s.MemberShipNumber.errors" class="invalid-feedback">
+
+                <div *ngIf="s.MemberShipNumber.errors.required"> MemberShipNumber is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <h3 class="text-center">
+                <button class="btn btn-success" type="submit">طلب الخدمة</button>
+
+              </h3>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn action-btn btn-warning waves-effect waves-light" (click)="close()"
+        data-dismiss="modal">Cancel</button>
+    </div>
+  </div>
+</ng-template>

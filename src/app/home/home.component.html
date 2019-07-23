@@ -1,0 +1,331 @@
+<section class="probootstrap_cover_v3 overflow-hidden relative text-center" id="section-home">
+  <div class="overlay"></div>
+  <div class="bd-example">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+
+      <div class="carousel-inner">
+        <div [ngClass]="[i === 0 ? 'carousel-item active' : 'carousel-item']"
+          *ngFor="let banner of Banners; let i = index">
+          <img src="http://yakensolution.cloudapp.net/Segada{{banner.URL}}" class="d-block w-100" alt="{{banner.Name}}"
+            style="height:95vh">
+          <div class="carousel-caption d-none d-md-block">
+            <h5><span style="color:white">{{banner.Name}}</span></h5>
+          </div>
+        </div>
+
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- END section -->
+
+
+<!-- <section class="probootstrap_section" id="section-feature">
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-6 text-center mb-5 ">
+          <h2>The Features</h2>
+        </div>
+      </div>
+      <div class="row">
+        
+        <div class="col-md-3 col-sm-6 ">
+          <div class="media d-block text-center probootstrap-media">
+            <img class="mr-0 mb-3 w-50 img-fluid rounded-circle" src="assets/images/img_1.jpg" alt="Generic placeholder image">
+            <div class="media-body">
+              <h5 class="mt-3">Video Background</h5>
+              <p class="probootstrap_font-14">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p class="read-more"><a href="#"><span class="ion-ios-arrow-thin-right probootstrap_font-30"></span></a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 ">
+          <div class="media d-block text-center probootstrap-media">
+            <img class="mr-0 mb-3 w-50 img-fluid rounded-circle" src="assets/images/img_2.jpg" alt="Generic placeholder image">
+            <div class="media-body">
+              <h5 class="mt-3">Popup Image</h5>
+              <p class="probootstrap_font-14">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p class="read-more"><a href="#"><span class="ion-ios-arrow-thin-right probootstrap_font-30"></span></a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 ">
+          <div class="media d-block text-center probootstrap-media">
+            <img class="mr-0 mb-3 w-50 img-fluid rounded-circle" src="assets/images/img_3.jpg" alt="Generic placeholder image">
+            <div class="media-body">
+              <h5 class="mt-3">Testimonial</h5>
+              <p class="probootstrap_font-14">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p class="read-more"><a href="#"><span class="ion-ios-arrow-thin-right probootstrap_font-30"></span></a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 ">
+          <div class="media d-block text-center probootstrap-media">
+            <img class="mr-0 mb-3 w-50 img-fluid rounded-circle" src="assets/images/img_4.jpg" alt="Generic placeholder image">
+            <div class="media-body">
+              <h5 class="mt-3">Table Pricing</h5>
+              <p class="probootstrap_font-14">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p class="read-more"><a href="#"><span class="ion-ios-arrow-thin-right probootstrap_font-30"></span></a></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+   -->
+<!-- END section -->
+
+
+<section class="probootstrap-section-half d-md-flex" id="section-about">
+  <div class="probootstrap-image " data-animate-effect="fadeIn" style="background-image: url(assets/images/test.jpg)">
+  </div>
+  <div class="probootstrap-text">
+    <div class="probootstrap-inner " data-animate-effect="fadeInRight">
+      <h2 class="heading mb-4">عن الغرفة</h2>
+      <p innerHTML="{{About.AboutTheRoom1}}"></p>
+      <p class="text-center"><a [routerLink]="['/about']" class="btn btn-primary text-center">المزيد</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- END section -->
+
+<section class="probootstrap_section">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-8 text-center mb-5 ">
+        <h2>دليل الاعضاء</h2>
+        <p class="probootstrap_font-18">دليل اعضاء غرفة صناعة النسيج</p>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-3 col-sm-6 " *ngFor="let mem of Members | paginate: { itemsPerPage: 4, currentPage: p }">
+        <div class="media d-block text-center probootstrap-media">
+          <img class="mr-0 mb-3 w-50 img-fluid rounded-circle" src="{{mem.LogoURL}}"
+            (error)="mem.LogoURL = 'assets/images/test.jpg'" alt="{{mem.CompanyName}}" style="height:120px">
+          <div class="media-body">
+            <h5 class="mt-3">{{mem.CompanyName}} </h5>
+            <p class="probootstrap_font-14">{{mem.Address}}</p>
+            <p class="probootstrap_font-14"><a href="http://{{mem.WebLink}}" target="_blank">{{mem.WebLink}}</a></p>
+            <p class="read-more"><a [routerLink]="['/member-details' , mem.Id]"><span
+                  class="ion-ios-arrow-thin-right probootstrap_font-30"></span></a></p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <h6 class="text-center">
+      <img src="assets/images/Rolling-1s-200px.svg" id="loading" width="60" height="60">
+    </h6>
+    <br>
+    <h3 class="text-center">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </h3>
+  </div>
+</section>
+
+<section class="probootstrap_section">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-8 text-center mb-5 ">
+        <h2>أجندة الاحداث</h2>
+        <p class="probootstrap_font-18">دليل احداث غرفة صناعة النسيج</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-md-4">
+            <h6 class="text-center">
+              <i class="fa fa-circle" style="color:#ad2121"></i> &nbsp; مؤتمرات
+            </h6>
+          </div>
+          <div class="col-md-4">
+            <h6 class="text-center">
+              <i class="fa fa-circle" style="color:#1e90ff"></i> &nbsp; تدريبات
+            </h6>
+          </div>
+          <div class="col-md-4">
+            <h6 class="text-center">
+              <i class="fa fa-circle" style="color:#e3bc08"></i> &nbsp; معارض
+            </h6>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <br>
+    <div class="row text-center">
+      <div class="col-md-4">
+        <div class="btn-group">
+          <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+            (viewDateChange)="closeOpenMonthViewDay()">
+            Next
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+      </div>
+      <div class="col-md-4">
+        <div class="btn-group">
+          <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+            (viewDateChange)="closeOpenMonthViewDay()">
+            Previous
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <br />
+    <div [ngSwitch]="view">
+      <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+        [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
+        (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)"
+        (click)="GetEventbyMonth()">
+      </mwl-calendar-month-view>
+      <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+        [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)">
+      </mwl-calendar-week-view>
+      <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
+        [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)">
+      </mwl-calendar-day-view>
+    </div>
+    <br>
+    <br>
+    <!-- <input type="date" [(ngModel)]="date" >
+    <button class="btn btn-success" (click)="GetEventbyMonth()">S</button> -->
+    <div id="event"></div>
+
+    <div class="row">
+      <div id="events">
+        <div class="col-12" class="event" *ngFor="let event of EventsDay">
+          <div class="row">
+            <div class="col-3">
+              <img src="{{event.ImageURL}}" (error)="event.ImageURL = 'assets/images/test.jpg'" height="150px"
+                width="100%">
+            </div>
+            <div class="col-9">
+
+              <h3>{{event.Name}}</h3>
+              <p innerHTML="{{event.Description}}"></p>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="col-12" *ngIf="EventsDay.length">
+          <h4 class="text-center">
+            <a [routerLink]="['/events']"> <button class="btn btn-warning text center">المزيد</button> </a>
+          </h4>
+        </div>
+        <h6 class="text-center" *ngIf="loading">
+          <img src="assets/images/Rolling-1s-200px.svg" id="loading1" width="60" height="60">
+        </h6>
+        <h4 class="text-center" *ngIf="notFound">
+          لا يوجد أحداث في هذا اليوم
+        </h4>
+      </div>
+
+
+    </div>
+
+  </div>
+</section>
+<!-- END section -->
+
+<section class="probootstrap_section">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-8 text-center mb-5 ">
+        <h2>أخر التطورات</h2>
+        <p class="probootstrap_font-18">أخر تطورات غرفة صناعة النسيج</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="nav nav-tabs row" id="myTab" role="tablist">
+          <li class="nav-item col-md-4">
+            <a class="nav-link active text-center" id="home-tab" data-toggle="tab" data-target="#home" role="tab"
+              aria-controls="home" aria-selected="true" style="font-size:20px ; font-weight: bold ; cursor: pointer;">الاخبار</a>
+          </li>
+          <li class="nav-item col-md-4">
+            <a class="nav-link text-center" id="profile-tab" data-toggle="tab" data-target="#profile" role="tab"
+              aria-controls="profile" aria-selected="false" style="font-size:20px ; font-weight: bold; cursor: pointer;">الخدمات</a>
+          </li>
+          <li class="nav-item col-md-4">
+            <a class="nav-link text-center" id="contact-tab" data-toggle="tab" data-target="#contact" role="tab"
+              aria-controls="contact" aria-selected="false" style="font-size:20px ; font-weight: bold; cursor: pointer;">القوانين</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"
+            style="padding:4%">
+            <div class="row">
+              <div class="col-md-4" *ngFor="let new of News">
+                <div class="card" style="width: 18rem; " [hidden]="!new.ShowInLatestUpdates">
+                  <img class="card-img-top" (error)="new.ImageURL = 'assets/images/test.jpg'" src="{{new.ImageURL}}"
+                    alt="{{new.Address}}">
+                  <div class="card-body">
+                    <h5 class="card-title">{{new.Address}}</h5>
+                    <p class="card-text" innerHTML="{{new.Content}}"></p>
+                    <a href="http://{{new.VideoURL}}" class="btn btn-primary" target="_blank">لينك الفيديو</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" style="padding:4%">
+            <div class="row">
+              <div class="col-md-4" *ngFor="let serv of Services">
+                <div class="card" style="width: 18rem;" [hidden]="!serv.ShowInLatestUpdates">
+                  <div class="card-body">
+                    <h5 class="card-title">{{serv.Name}}</h5>
+                    <p class="card-text" innerHTML="{{serv.Description}}"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab" style="padding:4%">
+            <div class="row">
+              <div class="col-12 service" *ngFor="let rul of Rules">
+                <div [hidden]="!rul.ShowInLatestUpdates">
+                  <h3>{{rul.Name}}</h3>
+                  <br>
+                  <p innerHTML="{{rul.Description}}"></p>
+                  <br>
+                  <div class="row">
+                    <div class="col-1 col-md-10"></div>
+                    <div class="col-5 col-md-2">
+                      <a href="http://yakensolution.cloudapp.net/Segada{{rul.PDFFileURL}}" target="_blank"> <button
+                          class="btn btn-danger button">ملف PDF</button></a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

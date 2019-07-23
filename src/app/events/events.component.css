@@ -1,0 +1,58 @@
+.event {
+  margin-top: 5%;
+  padding: 1%;
+  width: 100%;
+  border: 4px solid #eeeeee;
+  border-radius: 5px;
+}
+
+.trainig {
+  position: absolute;
+  top: 20px;
+  left: -12px;
+  overflow: hidden;
+  background-color: royalblue;
+  color: white;
+  border-radius: 10px;
+  -webkit-transform: rotate(20deg);
+  transform: rotate(-50deg);
+  -ms-transform: rotate(20deg);
+  width: 75px;
+  text-align: center;
+  font-size: 12px;
+
+}
+
+.conf {
+  position: absolute;
+  top: 20px;
+  left: -12px;
+  overflow: hidden;
+  background-color: #ad2121;
+  color: white;
+  border-radius: 10px;
+  -webkit-transform: rotate(20deg);
+  transform: rotate(-50deg);
+  -ms-transform: rotate(20deg);
+  width: 75px;
+  text-align: center;
+  font-size: 12px;
+  
+
+}
+
+.fair {
+  position: absolute;
+  top: 20px;
+  left: -12px;
+  overflow: hidden;
+  background-color: #e3bc08;
+  color: white;
+  border-radius: 10px;
+  -webkit-transform: rotate(20deg);
+  transform: rotate(-50deg);
+  -ms-transform: rotate(20deg);
+  width: 75px;
+  text-align: center;
+  font-size: 12px;
+}

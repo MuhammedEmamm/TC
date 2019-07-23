@@ -1,0 +1,30 @@
+
+
+.has-dropdown {
+  border: none;
+}
+
+.dropdown-content-list {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 250px;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  z-index: 1;
+  overflow: auto;
+  max-height: 200px;
+}
+
+.has-dropdown:hover .dropdown-content-list {
+  display: block;
+}
+
+.dropdown-content-list a {
+  padding: 3px 5px;
+  font-size: 15px !important;
+  border-bottom: 0.5px solid #888777;
+  text-decoration: none;
+  display: block;
+
+}

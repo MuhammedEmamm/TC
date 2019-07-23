@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar scrolled awake probootstrap_scrolled-light"
+  dir="ltr" style="max-height:70px;">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="['']">غرفة صناعة النسيج</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu"
+      aria-controls="probootstrap-menu" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="ion-navicon"></i></span>
+    </button>
+    <div class="collapse navbar-collapse" id="probootstrap-menu" dir="rtl">
+      <ul class="navbar-nav ml-auto">
+        <li [ngClass]="[router.url=='/' ? 'nav-item active' : 'nav-item']"><a class="nav-link"
+            [routerLink]="['']">الرئيسية</a></li>
+        <li [ngClass]="[router.url=='/about' ? 'nav-item active' : 'nav-item']"><a class="nav-link"
+            [routerLink]="[ '/about']">من نحن</a></li>
+        <li class="nav-item has-dropdown">
+          <a class="nav-link text-center">الخدمات</a>
+          <div class="dropdown-content-list">
+            <a class="nav-link text-center" [routerLink]="['/services']">خدمات الغرفة</a>
+            <a class="nav-link text-center">الدراسات</a>
+            <a class="nav-link text-center">الاتفاقيات</a>
+            <a class="nav-link text-center" [routerLink]="['rules']">القوانين و التشريعات</a>
+            <a class="nav-link text-center">الاحصائيات</a>
+          </div>
+        </li>
+        <li [ngClass]="[router.url=='/news' ? 'nav-item active' : 'nav-item']"><a class="nav-link"
+            [routerLink]="['news']">فرص تهمك</a></li>
+        <li class="nav-item has-dropdown">
+          <a class="nav-link" [routerLink]="['media']">المركز الاعلامي</a>
+          <div class="dropdown-content-list">
+            <a class="nav-link text-center" [routerLink]="['news']">الاخبار</a>
+            <a class="nav-link text-center" [routerLink]="['media']">ميديا</a>
+            <a class="nav-link text-center">المقالات</a>
+          </div>
+        </li>
+        <li [ngClass]="[router.url=='/members' ? 'nav-item active' : 'nav-item']"><a class="nav-link"
+            [routerLink]="['/members']">دليل الاعضاء</a></li>
+        <li [ngClass]="[router.url=='/events' ? 'nav-item active' : 'nav-item']"><a class="nav-link"
+            [routerLink]="['events']">اجندة الاحداث</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- END nav -->

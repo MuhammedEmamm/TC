@@ -1,0 +1,9 @@
+.service{
+    border: 2px solid #eeeeee ; 
+    border-radius: 5px; 
+    padding: 2%;
+    margin-top: 5%;
+}
+.button{
+    cursor: pointer;
+}

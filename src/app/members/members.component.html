@@ -1,0 +1,68 @@
+<section class="probootstrap_cover_v3 overflow-hidden relative text-center"
+  style="background-image: url('assets/images/img_1.jpg');height: 55vh;" id="section-home">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row align-items-center justify-content-center" style="height:60vh">
+      <div class="col-md">
+        <h2 class="heading mb-2 ">دليل اعضاء</h2>
+        <p class="lead mb-5  ">جميع اعضاء غرفة صناعة النسيج</p>
+        <div class="row">
+          <div class="col-4">
+          </div>
+          <div class="col-4">
+            <select class="form-control text-center" [(ngModel)]="Div" (change)="Filter(City , Div)">
+              <option value="" selected>الفئة</option>
+              <option *ngFor="let div of Divs" [value]="div.Id">{{div.Name}}</option>
+            </select>
+
+          </div>
+
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-4">
+
+          </div>
+          <div class="col-4">
+            <select class="form-control" [(ngModel)]="City" (change)="Filter(City , Div)">
+              <option value="" selected>المحافظة</option>
+              <option *ngFor="let city of Cities" [value]="city.Id">{{city.Name}}</option>
+            </select>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</section>
+<!-- END section -->
+<br>
+
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-12 col-md-10">
+    <div class="row">
+      <div class="col-12 col-md-4" *ngFor="let mem of FilterdMembers">
+        <div class="media d-block text-center probootstrap-media">
+          <img class="mr-0 mb-3 w-50 img-fluid rounded-circle" src="{{mem.LogoURL}}" (error)="mem.LogoURL = 'assets/images/test.jpg'"
+            alt="{{mem.CompanyName}}" style="height:200px">
+          <div class="media-body">
+            <h5 class="mt-3">{{mem.CompanyName}} </h5>
+            <p class="probootstrap_font-14">{{mem.Address}}</p>
+            <p class="probootstrap_font-14"><a href="http://{{mem.WebLink}}" target="_blank">{{mem.WebLink}}</a></p>
+            <p class="read-more"><a [routerLink]="['/member-details' , mem.Id]"><span class="ion-ios-arrow-thin-right probootstrap_font-30"></span></a></p>
+          </div>
+        </div>
+        
+
+      </div>
+    </div>
+    <h4 class="text-center" >
+      <img src="assets/images/Rolling-1s-200px.svg" id="loading">
+    </h4>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<section class="probootstrap_cover_v3 overflow-hidden relative text-center"
+  style="background-image: url('assets/images/img_1.jpg');height: 50vh;" id="section-home">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row align-items-center justify-content-center" style="height:60vh">
+      <div class="col-md">
+        <h2 class="heading mb-2 ">القوانين و التشريعات</h2>
+        <p class="lead mb-5  "> دليل لمعرفة القوانين و التشريعات </p>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- END section -->
+
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-10 ">
+    <div class="row">
+      <div class="col-12 service" *ngFor="let rul of Rules">
+        <h3>{{rul.Name}}</h3>
+        <br>
+        <p innerHTML="{{rul.Description}}"></p>
+        <br>
+        <div class="row">
+          <div class="col-1 col-md-10"></div>
+          <div class="col-5 col-md-2">
+            <a href="http://yakensolution.cloudapp.net/Segada{{rul.PDFFileURL}}" target="_blank">  <button class="btn btn-danger button">ملف PDF</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

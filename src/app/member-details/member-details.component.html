@@ -1,0 +1,44 @@
+<section class="probootstrap_cover_v3 overflow-hidden relative text-center"
+  style="background-image: url('assets/images/img_1.jpg');height: 50vh;" id="section-home">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row align-items-center justify-content-center" style="height:60vh">
+      <div class="col-md">
+        <h2 class="heading mb-2 ">تفاصيل العضو</h2>
+        <p class="lead mb-5  ">تفاصيل اعضاء غرفة صناعة النسيج</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END section -->
+<br>
+
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-10">
+    <div class="col-12 service">
+      <div class="row">
+        <div class="col-md-8">
+          <h2>الاسم : <b> {{Member.CompanyName}}</b></h2>
+          <br>
+          <p>
+            العنوان : <b>{{Member.Address}}</b>
+          </p>
+          <p>
+            {{Member.City.Name}} , {{Member.Division.Name}}
+          </p>
+          <p>
+            {{Member.ContactNumber}}
+          </p>
+          <p>
+           <a href="http://{{Member.WebLink}}" target="_blank"> {{Member.WebLink}} </a>
+          </p>
+        </div>
+        <div class="col-md-4">
+          <img src="{{Member.LogoURL}}" (error)="Member.LogoURL = 'assets/images/test.jpg'" style="height:100% ; width:100%">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

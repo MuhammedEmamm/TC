@@ -1,0 +1,19 @@
+.service {
+  border: 2px solid #eeeeee;
+  border-radius: 5px;
+  padding: 2%;
+  margin-top: 5%;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.invalid-feedback {
+  display: block;
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+    

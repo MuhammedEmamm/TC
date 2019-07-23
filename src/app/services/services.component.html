@@ -1,0 +1,151 @@
+<section class="probootstrap_cover_v3 overflow-hidden relative text-center"
+  style="background-image: url('assets/images/img_1.jpg');height: 50vh;" id="section-home">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row align-items-center justify-content-center" style="height:60vh">
+      <div class="col-md">
+        <h2 class="heading mb-2 ">الخدمات</h2>
+        <p class="lead mb-5  ">خدمات غرفة صناعة النسيج</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- END section -->
+
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-10 ">
+    <div class="row">
+      <div class="col-12 service" *ngFor="let set of Services">
+        <h3>{{set.Name}}</h3>
+        <br>
+        <p innerHTML="{{set.Description}}"></p>
+        <br>
+        <div class="row">
+          <div class="col-1 col-md-8"></div>
+          <div class="col-5 col-md-2 ">
+            <button class="btn btn-danger button">ملف PDF</button>
+
+          </div>
+          <div class="col-5 col-md-2">
+            <button class="btn btn-primary button" (click)="ServiceDetails(set.Id)">طلب الخدمة</button>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #RequestService let-close="close">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 class="title text-center" id="largeModalLabel"><i class="fa fa-edit"></i> طلب خدمة</h3>
+    </div>
+    <div class="modal-body">
+      <div class="card-body">
+        <form [formGroup]="RequestServiceForm" (ngSubmit)="RequestServices()">
+
+          <div class="row">
+            <div class="col-1 col-md-1"><i class="fa fa-users"></i></div>
+            <div class="col-10 col-md-10">
+              <input type="text" class="input-form" placeholder="الاسم" formControlName="Name"
+                [ngClass]="{ 'is-invalid': submitted && s.Name.errors }" style="width:100%">
+              <hr>
+
+              <div *ngIf="submitted && s.Name.errors" class="invalid-feedback">
+                <div *ngIf="s.Name.errors.required">Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-1 col-md-1"><i class="fa fa-envelope fa-lg icons"></i></div>
+            <div class="col-10 col-md-10">
+              <input type="text" class="input-form" placeholder="اسم الشركة" formControlName="CompanyName"
+                [ngClass]="{ 'is-invalid': submitted && s.CompanyName.errors }" style="width:100%">
+              <hr>
+
+              <div *ngIf="submitted && s.CompanyName.errors" class="invalid-feedback">
+                <div *ngIf="s.CompanyName.errors.required">Company Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-1 col-md-1"><i class="fa fa-phone fa-lg icons"></i></div>
+            <div class="col-10 col-md-10">
+              <input type="text" class="input-form" placeholder="رقم الهاتف" formControlName="PhoneNumber"
+                [ngClass]="{ 'is-invalid': submitted && s.PhoneNumber.errors }" style="width:100%">
+              <hr>
+
+              <div *ngIf="submitted && s.PhoneNumber.errors" class="invalid-feedback">
+                <div *ngIf="s.PhoneNumber.errors.required">PhoneNumber is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-1 col-md-1"><i class="fa fa-check fa-lg icons"></i></div>
+            <div class="col-10 col-md-10">
+              <input type="email" class="input-form" placeholder="البريد الالكتروني" formControlName="Email"
+                [ngClass]="{ 'is-invalid': submitted && s.Email.errors }" style="width:100%">
+              <hr>
+
+              <div *ngIf="submitted && s.Email.errors" class="invalid-feedback">
+
+                <div *ngIf="s.Email.errors.required"> Email is required</div>
+                <div *ngIf="s.Email.errors.email"> Email is not valid</div>
+
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-1 col-md-1"><i class="fa fa-unlock-alt fa-lg icons"></i></div>
+            <div class="col-10 col-md-10">
+              عضو
+              <input type="radio" class="input-form" placeholder="New Password" formControlName="Member"
+                [ngClass]="{ 'is-invalid': submitted && s.Member.errors }" [value]="'عضو'" [(ngModel)]="mem">
+              &nbsp;&nbsp;&nbsp;
+              غير عضو
+              <input type="radio" class="input-form" placeholder="New Password" formControlName="Member"
+                [ngClass]="{ 'is-invalid': submitted && s.Member.errors }" [value]="'غير عضو'" [(ngModel)]="mem">
+              <hr>
+              <div *ngIf="submitted && s.Member.errors" class="invalid-feedback">
+                <div *ngIf="s.Member.errors.required"> Member is required</div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row" *ngIf="mem == 'عضو'">
+            <div class="col-1 col-md-1"><i class="fa fa-check fa-lg icons"></i></div>
+            <div class="col-10 col-md-10">
+              <input type="text" class="input-form" placeholder="رقم العضوية" formControlName="MemberShipNumber"
+                [ngClass]="{ 'is-invalid': submitted && s.MemberShipNumber.errors }" style="width:100%">
+              <hr>
+              <div *ngIf="submitted && s.MemberShipNumber.errors" class="invalid-feedback">
+
+                <div *ngIf="s.MemberShipNumber.errors.required"> MemberShipNumber is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <h3 class="text-center">
+                <button class="btn btn-success " type="submit">طلب الخدمة</button>
+
+              </h3>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn action-btn btn-warning waves-effect waves-light" (click)="close()"
+        data-dismiss="modal">Cancel</button>
+    </div>
+  </div>
+</ng-template>

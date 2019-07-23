@@ -1,0 +1,137 @@
+<section class="probootstrap_cover_v3 overflow-hidden relative text-center"
+  style="background-image: url('assets/images/img_1.jpg'); height: 50vh;" id="section-home">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row align-items-center justify-content-center" style="height:60vh">
+      <div class="col-md">
+        <h2 class="heading mb-2">من نحن</h2>
+        <p class="lead mb-5">نبذة عن غرفة صناعة النسيج</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END section -->
+
+<section class="about" id="section-feature">
+  <div class="container">
+    <div class="accordion" id="accordionExample">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne" style="width:100%">
+              <span class="text">
+                عن الغرفة
+              </span>
+
+            </button>
+          </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+
+            <p innerHTML=" {{About.AboutTheRoom1}}"></p>
+
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+              aria-expanded="false" aria-controls="collapseTwo" style="width:100%">
+              <span class="text">
+                الخطط والاستراتیجیة
+
+              </span>
+            </button>
+          </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <div class="card-body">
+
+            <p innerHTML=" {{Plan.Plans}}"></p>
+
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+              aria-expanded="false" aria-controls="collapseThree" style="width:100%">
+              <span class="text">
+                الرؤیة
+              </span>
+            </button>
+          </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body">
+            <p innerHTML="{{Vision.Vision1}}"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- END section -->
+
+<section class="board">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-8 text-center mb-5 ">
+        <h2>مجلس الادارة</h2>
+        <p class="probootstrap_font-18">مجلس ادارة غرفة صناعة النسيج</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6 " *ngFor="let mem of Board">
+        <div class="media d-block text-center probootstrap-media">
+          <img class="mr-0 mb-3 w-50 img-fluid rounded-circle"
+            src="http://yakensolution.cloudapp.net/Segada{{mem.ImageUrl}}" alt="Generic placeholder image">
+          <div class="media-body">
+            <h5 class="mt-3">{{mem.Name}}</h5>
+            <p class="probootstrap_font-14">{{mem.Position}}</p>
+            <p class="read-more"><a href="#"><span class="ion-ios-arrow-thin-right probootstrap_font-30"></span></a></p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</section>
+
+<!-- END section -->
+
+<section class="emps">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-8 text-center mb-5 ">
+        <h2>الموظفين</h2>
+        <p class="probootstrap_font-18"> الموظفين غرفة صناعة النسيج</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-6 " *ngFor="let emp of Emps">
+        <div class="media d-block text-center probootstrap-media">
+          <img class="mr-0 mb-3 w-50 img-fluid rounded-circle"
+            src="http://yakensolution.cloudapp.net/Segada{{emp.ImageUrl}}" alt="Generic placeholder image">
+          <div class="media-body">
+            <h5 class="mt-3">{{emp.Name}}</h5>
+            <p class="probootstrap_font-14">{{emp.Position}}</p>
+            <p class="read-more"><a href="#"><span class="ion-ios-arrow-thin-right probootstrap_font-30"></span></a></p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- END section -->

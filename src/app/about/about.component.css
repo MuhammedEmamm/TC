@@ -1,0 +1,19 @@
+.text{
+    color: black
+}
+.about{
+    width: 100%;
+    padding: 2em 0;
+    float: left;
+}
+.emps{
+    width: 100%;
+    padding: 2%;
+    float: left;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+.board{
+    width: 100%;
+    padding: 2%;
+    float: left;
+}

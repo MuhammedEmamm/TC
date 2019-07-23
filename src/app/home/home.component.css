@@ -1,0 +1,18 @@
+#events {
+  max-height: 220px;
+  overflow: auto;
+  padding: 1%;
+  margin-top: 10%;
+  width: 100%;
+}
+
+.event {
+  margin-top: 2%;
+  padding: 1%;
+}
+.service{
+  border: 2px solid #eeeeee ; 
+  border-radius: 5px; 
+  padding: 2%;
+  margin-top: 5%;
+}
